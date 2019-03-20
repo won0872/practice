@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+  <bean id="salaryServiceFacade"
+      class="kr.co.wmhr.hr.salary.sf.SalaryServiceFacadeImpl"
+      p:salaryApplicationService-ref="salaryApplicationService"/>
+
+   <bean id="salaryApplicationService"
+      class="kr.co.wmhr.hr.salary.applicationService.SalaryApplicationServiceImpl"
+      p:baseDeductionDAO-ref="baseDeductionDAO" 
+      p:baseExtSalDAO-ref="baseExtSalDAO"
+      p:baseSalaryDAO-ref="baseSalaryDAO"
+      p:monthDeductionDAO-ref="monthDeductionDAO"
+      p:monthExtSalDAO-ref="monthExtSalDAO" 
+      p:monthSalaryDAO-ref="monthSalaryDAO" />
+      
+
+   
+
+   <bean id="baseDeductionDAO" class="kr.co.wmhr.hr.salary.dao.BaseDeductionDAOImpl"
+      p:dataSourceTransactionManager-ref="dataSourceTransactionManager" />
+
+   <bean id="baseExtSalDAO" class="kr.co.wmhr.hr.salary.dao.BaseExtSalDAOImpl"
+      p:dataSourceTransactionManager-ref="dataSourceTransactionManager" />
+
+   <bean id="monthDeductionDAO" class="kr.co.wmhr.hr.salary.dao.MonthDeductionDAOImpl"
+      p:dataSourceTransactionManager-ref="dataSourceTransactionManager" />
+
+   <bean id="monthExtSalDAO" class="kr.co.wmhr.hr.salary.dao.MonthExtSalDAOImpl"
+      p:dataSourceTransactionManager-ref="dataSourceTransactionManager" />
+
+   <bean id="monthSalaryDAO" class="kr.co.wmhr.hr.salary.dao.MonthSalaryDAOImpl"
+      p:dataSourceTransactionManager-ref="dataSourceTransactionManager" />
+      
+   <bean id="baseSalaryDAO" class="kr.co.wmhr.hr.salary.dao.BaseSalaryDAOImpl"
+      p:dataSourceTransactionManager-ref="dataSourceTransactionManager" />  
+
+
+
+</beans>

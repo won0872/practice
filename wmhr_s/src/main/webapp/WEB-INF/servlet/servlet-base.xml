@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:lang="http://www.springframework.org/schema/lang"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-3.1.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.1.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-3.1.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
+
+
+
+	<bean id="baseUrlHandlerMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="order" value="1" />
+		<property name="alwaysUseFullPath" value="true" />
+		<property name="mappings">
+			<props>
+				<prop key="/base/codeWindow.html">urlFilenameViewController</prop>
+				<prop key="/base/menuList.do">menuController</prop>
+				<prop key="/base/codeList.html">urlFilenameViewController</prop>
+				<prop key="/base/codeList.do">codeListController</prop>
+				<prop key="/base/authorityManage.html">urlFilenameViewController</prop>
+				<prop key="/base/holidayList.html">urlFilenameViewController</prop>
+				<prop key="/base/holidayList.do">holidayListController</prop>
+				<prop key="/base/deptList.html">urlFilenameViewController</prop>
+				<prop key="/base/deptList.do">deptListController</prop>
+				<prop key="/base/positionList.html">urlFilenameViewController</prop>
+				<prop key="/base/positionList.do">positionListController</prop>
+				<prop key="/base/authorityList.html">urlFilenameViewController</prop>
+				<prop key="/base/authorityList.do">authorityListController</prop> 
+				<prop key="/base/empReport.do">empReportController</prop> 
+			</props>
+		</property>
+	</bean>
+
+	<bean id="codeListController"
+		class="kr.co.wmhr.base.controller.CodeListController"
+		p:cacheSeconds="0"
+		p:methodNameResolver-ref="parameterMethodNameResolver"
+		p:baseServiceFacade-ref="baseServiceFacade" />
+
+<!-- 	<bean id="empImgController"
+		class="kr.co.shhr.base.controller.EmpImgController" p:cacheSeconds="0"
+		p:methodNameResolver-ref="parameterMethodNameResolver"
+		p:baseServiceFacade-ref="baseServiceFacade" /> -->
+
+	<bean id="holidayListController"
+		class="kr.co.wmhr.base.controller.HolidayListController"
+		p:cacheSeconds="0"
+		p:methodNameResolver-ref="parameterMethodNameResolver"
+		p:baseServiceFacade-ref="baseServiceFacade" />
+
+	<bean id="menuController"
+		class="kr.co.wmhr.base.controller.MenuController" p:cacheSeconds="0"
+		p:baseServiceFacade-ref="baseServiceFacade" />
+
+	<bean id="empReportController"
+		class="kr.co.wmhr.base.controller.EmpReportController"
+		p:cacheSeconds="0"
+		p:methodNameResolver-ref="parameterMethodNameResolver"
+		p:empServiceFacade-ref="empServiceFacade" />
+
+	<bean id="deptListController"
+		class="kr.co.wmhr.base.controller.DeptListController"
+		p:methodNameResolver-ref="parameterMethodNameResolver"
+		p:baseServiceFacade-ref="baseServiceFacade"
+		p:empServiceFacade-ref="empServiceFacade" />
+
+	<bean id="positionListController"
+		class="kr.co.wmhr.base.controller.PositionListController"
+		p:cacheSeconds="0"
+		p:methodNameResolver-ref="parameterMethodNameResolver"
+		p:baseServiceFacade-ref="baseServiceFacade" />
+
+
+	 <bean id="authorityListController"
+		class="kr.co.wmhr.base.controller.AuthorityListController"
+		p:cacheSeconds="0"
+		p:methodNameResolver-ref="parameterMethodNameResolver"
+		p:baseServiceFacade-ref="baseServiceFacade" />
+		
+		
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+		<property name="order" value="5" />
+	</bean>
+
+
+</beans>

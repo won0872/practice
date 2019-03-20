@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+
+ <decorators defaultdir="/WEB-INF/views/decorators">
+	<excludes>
+       <pattern>/member/list.do</pattern>
+       <pattern>/base/codeWindow.html*</pattern>
+       <pattern>/base/postWindow.html*</pattern>
+	</excludes>    
+	<decorator name="main" page="decorator.jsp">
+        <pattern>/*</pattern>  
+	</decorator>
+ </decorators>

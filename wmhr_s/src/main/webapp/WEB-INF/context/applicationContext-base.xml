@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+
+
+	<bean id="baseServiceFacade"
+		class="kr.co.wmhr.base.sf.BaseServiceFacadeImpl"
+		p:baseApplicationService-ref="baseApplicationService"
+		p:dataSourceTransactionManager-ref="dataSourceTransactionManager"
+		p:empApplicationService-ref="empApplicationService" />
+
+	<bean id="baseApplicationService"
+		class="kr.co.wmhr.base.applicationService.BaseApplicationServiceImpl"
+		p:codeDAO-ref="codeDAO" p:deptDAO-ref="deptDAO"
+		p:detailCodeDAO-ref="detailCodeDAO" p:holidayDAO-ref="holidayDAO"
+		p:menuDAO-ref="menuDAO"
+		p:empApplicationService-ref="empApplicationService"
+		p:baseSalaryDAO-ref="baseSalaryDAO" p:authorityDAO-ref="authorityDAO" />
+
+
+
+	<bean id="codeDAO" class="kr.co.wmhr.base.dao.CodeDAOImpl"
+		p:dataSourceTransactionManager-ref="dataSourceTransactionManager" />
+
+	<bean id="deptDAO" class="kr.co.wmhr.base.dao.DeptDAOImpl"
+		p:dataSourceTransactionManager-ref="dataSourceTransactionManager" />
+
+	<bean id="detailCodeDAO"
+		class="kr.co.wmhr.base.dao.DetailCodeDAOImpl"
+		p:dataSourceTransactionManager-ref="dataSourceTransactionManager" />
+
+	<bean id="holidayDAO" class="kr.co.wmhr.base.dao.HolidayDAOImpl"
+		p:dataSourceTransactionManager-ref="dataSourceTransactionManager" />
+
+	<bean id="menuDAO" class="kr.co.wmhr.base.dao.MenuDAOImpl"
+		p:dataSourceTransactionManager-ref="dataSourceTransactionManager" />
+
+	<bean id="empDAO" class="kr.co.wmhr.hr.emp.dao.EmpDAOImpl"
+		p:dataSourceTransactionManager-ref="dataSourceTransactionManager" />
+
+	<bean id="authorityDAO" class="kr.co.wmhr.base.dao.AuthorityDAOImpl"
+		p:dataSourceTransactionManager-ref="dataSourceTransactionManager" />
+
+</beans>

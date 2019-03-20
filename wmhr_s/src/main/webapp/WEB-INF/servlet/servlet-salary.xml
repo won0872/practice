@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="salaryUrlHandlerMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="order" value="1" />
+		<property name="alwaysUseFullPath" value="true" />
+		<property name="mappings">
+			<props>
+				<prop key="/salary/monthSalary.html">urlFilenameViewController</prop>
+				<prop key="/salary/monthSalary.do">monthSalaryController</prop>
+
+				<prop key="/salary/baseSalaryManage.html">urlFilenameViewController</prop>
+				<prop key="/salary/baseSalaryManage.do">baseSalaryController</prop>
+
+				<prop key="/salary/baseDeductionManage.html">urlFilenameViewController</prop>
+				<prop key="/salary/baseDeductionManage.do">baseDeductionController</prop>
+
+				<prop key="/salary/baseExtSalManage.html">urlFilenameViewController</prop>
+				<prop key="/salary/baseExtSalManage.do">baseExtSalController</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="monthSalaryController"
+		class="kr.co.wmhr.hr.salary.controller.MonthSalaryController"
+		p:cacheSeconds="0"
+		p:methodNameResolver-ref="parameterMethodNameResolver"
+		p:salaryServiceFacade-ref="salaryServiceFacade" />
+
+	<bean id="baseSalaryController"
+		class="kr.co.wmhr.hr.salary.controller.BaseSalaryController"
+		p:cacheSeconds="0"
+		p:methodNameResolver-ref="parameterMethodNameResolver"
+		p:salaryServiceFacade-ref="salaryServiceFacade" />
+
+	<bean id="baseDeductionController"
+		class="kr.co.wmhr.hr.salary.controller.BaseDeductionController"
+		p:cacheSeconds="0"
+		p:methodNameResolver-ref="parameterMethodNameResolver"
+		p:salaryServiceFacade-ref="salaryServiceFacade" />
+
+	<bean id="baseExtSalController"
+		class="kr.co.wmhr.hr.salary.controller.BaseExtSalController"
+		p:cacheSeconds="0"
+		p:methodNameResolver-ref="parameterMethodNameResolver"
+		p:salaryServiceFacade-ref="salaryServiceFacade" />
+
+	<bean id="viewResolver" p:order="1"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	
+</beans>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="empServiceFacade"
+		class="kr.co.wmhr.hr.emp.sf.EmpServiceFacadeImpl"
+		p:empApplicationService-ref="empApplicationService" />
+
+	<bean id="empApplicationService"
+		class="kr.co.wmhr.hr.emp.applicationService.EmpApplicationServiceImpl"
+		p:empDAO-ref="empDAO" 
+		p:familyInfoDAO-ref="familyInfoDAO"
+		p:careerInfoDAO-ref="careerInfoDAO"
+		p:educationInfoDAO-ref="educationInfoDAO"
+		p:licenseInfoDAO-ref="licenseInfoDAO" 
+		p:deptDAO-ref="deptDAO"
+		p:workInfoDAO-ref="workInfoDAO"
+		p:salaryApplicationService-ref="salaryApplicationService"
+		p:baseApplicationService-ref="baseApplicationService" />
+
+	<bean id="empDAO" class="kr.co.wmhr.hr.emp.dao.EmpDAOImpl"
+		p:dataSourceTransactionManager-ref="dataSourceTransactionManager" />
+
+	<bean id="familyInfoDAO"
+		class="kr.co.wmhr.hr.emp.dao.FamilyInfoDAOImpl"
+		p:dataSourceTransactionManager-ref="dataSourceTransactionManager" />
+
+	<bean id="careerInfoDAO"
+		class="kr.co.wmhr.hr.emp.dao.CareerInfoDAOImpl"
+		p:dataSourceTransactionManager-ref="dataSourceTransactionManager" />
+
+	<bean id="educationInfoDAO"
+		class="kr.co.wmhr.hr.emp.dao.EducationInfoDAOImpl"
+		p:dataSourceTransactionManager-ref="dataSourceTransactionManager" />
+
+	<bean id="licenseInfoDAO"
+		class="kr.co.wmhr.hr.emp.dao.LicenseInfoDAOImpl"
+		p:dataSourceTransactionManager-ref="dataSourceTransactionManager" />
+
+	<bean id="workInfoDAO"
+		class="kr.co.wmhr.hr.emp.dao.WorkInfoDAOImpl"
+		p:dataSourceTransactionManager-ref="dataSourceTransactionManager" />
+
+</beans>
